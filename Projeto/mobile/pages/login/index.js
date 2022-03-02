@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, ToastAndroid, Touchable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import AsyncStorages from '@react-native-async-storage/async-storage';
 import md5 from 'md5';
 import style from './style.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
@@ -17,25 +17,29 @@ export default function Login({ navigation }) {
     const autenticar = () => {
         let user = {
             email: email,
-            senha: md5(senha)
+            senha: senha
         }
 
-        // fetch('http://10.87.207.6:3000/login', {
-        //     "method":"POST",
-        //     "headers": {
-        //         "Content-Type": "application/json"
-        //     },
-        //     "body": JSON.stringify(user),
-        // })
-        // .then(resp => { return resp.json() })
-        // .then(async data => {
-        //     if(data.length > 0){
-        //         await AsyncStorage.setItem('userdata', JSON.stringify(data[0]));
-        //         navigation.navigate("Main");
-        //     } else {
-        //         ToastAndroid.show('Email ou Senha Inválidos', ToastAndroid.SHORT);
-        //     }
-        // })
+        fetch('http://10.87.207.31:8080/api/login', {
+            "method":"POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify(user),
+        })
+        .then(resp => { 
+            if(!(resp.status == 404)){
+                return resp.json();
+            }
+        })
+        .then(data => {
+            if(data != undefined){
+                AsyncStorage.setItem('userdata', JSON.stringify(data[0]));
+                navigation.navigate("Main");
+            }else{
+                ToastAndroid.show('Email ou Senha Inválidos', ToastAndroid.SHORT);
+            }
+        })
     }
 
     const habilitarCadastro = () => {
@@ -46,27 +50,30 @@ export default function Login({ navigation }) {
         let user = {
             nome: nome,
             email: email,
-            data: data,
-            senha: md5(senha),
+            data_nascimento: data,
+            senha: senha,
         }
 
-        // fetch("http://10.87.207.6:3000/user", {
-        //     "method":"POST",
-        //     "headers": {
-        //         "Content-Type":"application/json"
-        //     },
-        //     "body": JSON.stringify(user)
-        // })
-        // .then(resp => { return resp.json() })
-        // .then(async data => {
-        //     if(data.id === undefined) {
-        //         ToastAndroid.show("Falha ao cadastrar", ToastAndroid.SHORT);
-        //         setCadastro(false);
-        //     } else {
-        //         await AsyncStorage.setItem('userdata', JSON.stringify(data));
-        //         navigation.navigate("Main");
-        //     }
-        // });
+        fetch("http://10.87.207.31:8080/api/cadastro", {
+            "method":"POST",
+            "headers": {
+                "Content-Type":"application/json"
+            },
+            "body": JSON.stringify(user)
+        })
+        .then(resp => {
+            if(!(resp.status == 404)){
+                return resp.json();
+            }})
+        .then( data => {
+            if(data == undefined) {
+                ToastAndroid.show("Falha ao cadastrar", ToastAndroid.SHORT);
+                setCadastro(false);
+            } else {
+                AsyncStorage.setItem('userdata', JSON.stringify(data));
+                navigation.navigate("Main");
+            }
+        });
     }
 
     return ( 
@@ -75,7 +82,7 @@ export default function Login({ navigation }) {
             <Image style={style.image} source={require('../../assets/app/logo.png')} />
 
             <TextInput value={email} onChangeText={setEmail} placeholder={"Email"} style={[style.inputs, style.boxWithShadow]} />
-            <TextInput value={senha} onChangeText={setSenha} placeholder={"Senha"} style={[style.inputs, style.boxWithShadow]} />
+            <TextInput value={senha} secureTextEntry={true} onChangeText={setSenha} placeholder={"Senha"} style={[style.inputs, style.boxWithShadow]} />
 
             {
                 (cadastro) ?
