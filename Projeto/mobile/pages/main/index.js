@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
+import style from './style.js';
 import Icon from "react-native-vector-icons/AntDesign";
 
 import Feed from '../feed';
 import Post from '../post';
 import User from '../user';
+
 
 function MyTabBar({ state, descriptors, navigation }) {
     let selected = state.index;
@@ -43,13 +45,11 @@ function MyTabBar({ state, descriptors, navigation }) {
           }else if(index == 2) {
             arrColor = ["#EB1075", "#E50F90"];
             icon = <Icon name="user" color={(selected == index ) ? "#495057" : "#000"} size={26} />;
-          } 
-
-          //arrColor = ["#F51344", "#E50F90"]
+          }
 
           return (
             <View style={{flex:1, height: 50, width: "100%",}} >
-                <LinearGradient  start={{x: 0, y: 0.75}} end={{x: 1, y: 0.25}} colors={arrColor} style={{flex:1, height: 30, width: "100%",}}>
+                <LinearGradient  start={{x: 0, y: 0.75}} end={{x: 1, y: 0.25}} colors={arrColor} style={{flex:1, height: 40, width: "100%",}}>
                     <TouchableOpacity
                     accessibilityRole="button"
                     accessibilityState={isFocused ? { selected: true } : {}}
@@ -73,7 +73,18 @@ function MyTabBar({ state, descriptors, navigation }) {
   export default function App() {
     return (
       <NavigationContainer independent={true}>
-        <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+        <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />} 
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#F51344"
+            },
+            headerRight: () => (
+              <TouchableOpacity onPress={() => alert('this is buton')} >
+                <Image source={require('../../assets/app/sino-de-notificacao.png')}
+                style={style.notif} />
+              </TouchableOpacity>
+            )
+        }}>
             <Tab.Screen 
                 name="Feed" 
                 component={Feed}
