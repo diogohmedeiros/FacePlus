@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, ToastAndroid, Touchable } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, ToastAndroid } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import md5 from 'md5';
 import style from './style.js';

@@ -40,13 +40,35 @@ export default StyleSheet.create({
         height: 25
     },
     cards: {
-        backgroundColor: "#e5e5e5",
+        backgroundColor: "#F3F5F8",
         width: '90%',
         height: 85,
-        display: "flex",
-        flexDirection: "column",
+        justifyContent: 'space-around',
         borderRadius: 6,
-        padding: 10,
-        left: 18
+        left: 18,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        margin: 4
+    },
+    // imagecard: {
+    //     width: 35,
+    //     height: 35,
+    // },
+    nameestab: {
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+    mediaaval: {
+        height: 25,
+        width: 50,
+        borderRadius: 8,
+        textAlign: "center",
+        backgroundColor: "#fff",
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,  
+        elevation: 10
     }
 })
