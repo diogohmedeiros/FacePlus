@@ -7,7 +7,7 @@ export default StyleSheet.create({
         height: "100%",
     },
     search: {
-        width: "90%",
+        width: "78%",
         height: 35,
         display: "flex",
         alignItems: "center",
@@ -17,10 +17,18 @@ export default StyleSheet.create({
         borderRadius: 6,
         margin: 20
     },
+    searchimage: {
+        margin: 23,
+        width: 25,
+        height: 25,
+        right: 25
+    },
     colorbusca: {
         width: "100%",
         height: "12%",
         backgroundColor: "#FBEAEA",
+        display: "flex",
+        flexDirection: "row",
     },
     best: {
         display: "flex",
@@ -43,7 +51,7 @@ export default StyleSheet.create({
         backgroundColor: "#F3F5F8",
         width: '90%',
         height: 85,
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         borderRadius: 6,
         left: 18,
         display: "flex",
@@ -51,13 +59,17 @@ export default StyleSheet.create({
         alignItems: "center",
         margin: 4
     },
-    // imagecard: {
-    //     width: 35,
-    //     height: 35,
-    // },
+    imagecard: {
+        width: 50,
+        height: 50,
+        margin: 15,
+        backgroundColor: "#e5e5e5",
+        borderRadius: 50
+    },
     nameestab: {
         fontSize: 18,
         fontWeight: "bold",
+        right: 27
     },
     mediaaval: {
         height: 25,
@@ -69,6 +81,7 @@ export default StyleSheet.create({
         shadowOffset: { width: 2, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,  
-        elevation: 10
+        elevation: 10,
+        margin: 15
     }
 })

@@ -48,7 +48,7 @@ function MyTabBar({ state, descriptors, navigation }) {
           }
 
           return (
-            <View style={{flex:1, height: 50, width: "100%",}} >
+            <View key={index} style={{flex:1, height: 50, width: "100%",}} >
                 <LinearGradient  start={{x: 0, y: 0.75}} end={{x: 1, y: 0.25}} colors={arrColor} style={{flex:1, height: 40, width: "100%",}}>
                     <TouchableOpacity
                     accessibilityRole="button"
@@ -76,18 +76,25 @@ function MyTabBar({ state, descriptors, navigation }) {
         <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />} 
           screenOptions={{
             headerStyle: {
-              backgroundColor: "#F51344"
+              backgroundColor: "#F51344",
+              color: '#fff'
             },
             headerRight: () => (
               <TouchableOpacity onPress={() => alert('this is buton')} >
                 <Image source={require('../../assets/app/sino-de-notificacao.png')}
                 style={style.notif} />
               </TouchableOpacity>
-            )
+            ),
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 28,
+            }
         }}>
             <Tab.Screen 
-                name="Feed" 
+                name="FacePlus+" 
                 component={Feed}
+                
             />
 
             <Tab.Screen 
@@ -96,7 +103,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             />
 
             <Tab.Screen 
-                name="User" 
+                name="Meu Perfil" 
                 component={User}
             />
         </Tab.Navigator>
