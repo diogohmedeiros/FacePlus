@@ -1,23 +1,22 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-import Login from './pages/login';
-import Main from './pages/main';
+import Feed from '../../pages/feed';
+import Detalhe from '../../pages/detalhe';
+import Notificacao from '../../pages/notificacao';
 
 export default function App() {
   return (
-    <NavigationContainer>
       <Stack.Navigator screenOptions={{
           headerShown: false
         }}
       >
-        {/* <Stack.Screen name="Login" component={Login} /> */}
-        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="Detalhe" component={Detalhe} />
+        <Stack.Screen name="Notificacao" component={Notificacao} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

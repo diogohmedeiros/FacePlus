@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 import style from './style.js';
 import Icon from "react-native-vector-icons/AntDesign";
 
-import Feed from '../feed';
 import Post from '../post';
-import User from '../user';
 
+import ContainerFeed from '../../containers/containerFeed';
+import ContainerUser from '../../containers/containerUser';
 
 function MyTabBar({ state, descriptors, navigation }) {
+  
     let selected = state.index;
     return (
       <View style={{ flexDirection: 'row' }}>
@@ -76,35 +77,50 @@ function MyTabBar({ state, descriptors, navigation }) {
         <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />} 
           screenOptions={{
             headerStyle: {
-              backgroundColor: "#F51344",
-              color: '#fff'
+              backgroundColor: "#F51344"
             },
-            headerRight: () => (
-              <TouchableOpacity onPress={() => alert('this is buton')} >
-                <Image source={require('../../assets/app/sino-de-notificacao.png')}
-                style={style.notif} />
-              </TouchableOpacity>
-            ),
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize: 28,
-            }
+            headerShown: false
+            
         }}>
             <Tab.Screen 
                 name="FacePlus+" 
-                component={Feed}
-                
+                component={ContainerFeed}
+                // options={{
+                //   headerTintColor: '#fff',
+                //   headerTitleStyle: {
+                //     fontWeight: 'bold',
+                //     fontSize: 28,
+                // },
+                // headerRight: () => (
+                //   <TouchableOpacity onPress={() => alert('this is buton')} >
+                //     <Image source={require('../../assets/app/sino-de-notificacao.png')}
+                //     style={style.notif} />
+                //   </TouchableOpacity>
+                // )
+                // }}
             />
 
             <Tab.Screen 
-                name="Post" 
+                name=" FacePlus+" 
                 component={Post}
+                // options={{
+                //   headerTintColor: '#fff',
+                //   headerTitleStyle: {
+                //     fontWeight: 'bold',
+                //     fontSize: 28,
+                // },
+                // headerRight: () => (
+                //   <TouchableOpacity onPress={() => alert('this is buton')} >
+                //     <Image source={require('../../assets/app/sino-de-notificacao.png')}
+                //     style={style.notif} />
+                //   </TouchableOpacity>
+                // ),
+                // }}
             />
 
             <Tab.Screen 
                 name="Meu Perfil" 
-                component={User}
+                component={ContainerUser}
             />
         </Tab.Navigator>
       </NavigationContainer>

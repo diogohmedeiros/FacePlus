@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
     colorbusca: {
         width: "100%",
-        height: "12%",
+        height: 74,
         backgroundColor: "#FBEAEA",
         display: "flex",
         flexDirection: "row",
@@ -35,7 +35,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         margin: 10,
-        height: 50
+        height: 50,
     },
     bestText: {
         fontSize: 15,
@@ -63,7 +63,7 @@ export default StyleSheet.create({
         width: 50,
         height: 50,
         margin: 15,
-        backgroundColor: "#e5e5e5",
+        //backgroundColor: "#e5e5e5",
         borderRadius: 50
     },
     nameestab: {
@@ -83,5 +83,13 @@ export default StyleSheet.create({
         shadowRadius: 10,  
         elevation: 10,
         margin: 15
+    },
+    header: {
+        height:85,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: 15,
+        paddingLeft: 15
     }
 })
