@@ -11,6 +11,21 @@ export default function User({ navigation }) {
     useEffect(() => {
         const _retrieveData = async () => {
             try {
+                // Se der merda, descomenta essa merda, e seja feliz
+
+                // let settings = {
+                //     method: "POST",
+                //     body: JSON.stringify({
+                //         "email": "diogo@gmail.com",
+                //         "senha": "4321"
+                //     })
+                // }
+                // let response = await fetch("http://10.87.207.31:8080/api/login", settings);
+                // let data = await response.json();
+                // AsyncStorage.setItem('userdata', JSON.stringify(data));
+
+                // Ai comenta isso aqui, e depois descomenta
+                
                 const data = await AsyncStorage.getItem('userdata');
                 setPerfil(JSON.parse(data));
             } catch (error) {

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     perfil: {
         backgroundColor: '#FBEAEA',
-        height: '45%',
+        height: '40%',
         alignItems: "center",
     },
     avaliacoes: {
@@ -16,7 +16,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-around",
-        width: 100,
+        width: 110,
         padding: 5,
         borderRadius: 7,
         backgroundColor: "#fff",
@@ -25,8 +25,8 @@ export default StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 10,  
         elevation: 10,
-        top: -48,
-        left: 25
+        top: -45,
+        left: 40
     },
     textconf: {
         fontWeight: "bold",
@@ -40,7 +40,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         margin: 30,
         justifyContent: "space-around",
-        width: "100%"
+        width: "100%",
     },
     avatar: {
         width: 110,
@@ -52,6 +52,7 @@ export default StyleSheet.create({
         shadowOffset: { width: 2, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
+        left: 10
     },
     text: {
         fontSize: 20,
@@ -59,7 +60,7 @@ export default StyleSheet.create({
     },
     textos: {
         justifyContent: 'center',
-        right: 40,
+        right: 5,
         height: 80,
         margin: 10,
         padding: 10,
@@ -80,4 +81,23 @@ export default StyleSheet.create({
         fontWeight: "bold",
         right: 27
     },
+    listTab: {
+        flex: 1,
+        //padding: 20,
+        flexDirection: 'row',
+        backgroundColor: "#fff"
+    },
+    textTab: {
+        fontSize: 21
+    },
+    btnTab: {
+        flexDirection: 'row',
+        width: Dimensions.get('window').width / 2,
+        borderWidth: 0.5,
+        padding: 10,
+        justifyContent: 'center'
+    },
+    btnActive: {
+        backgroundColor: '#f5f5f5'
+    }
 })

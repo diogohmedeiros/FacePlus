@@ -2,13 +2,10 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: '#fbeaea',
         width: '100%',
         height: '100%',
-    },
-    perfil: {
-        backgroundColor: '#FBEAEA',
-        height: 460,
+        flex: 1,
     },
     textinput: {
         backgroundColor: '#fff',
@@ -22,6 +19,7 @@ export default StyleSheet.create({
         shadowRadius: 10,  
         elevation: 10,
         padding: 10
+    
     },
     desc: {
         margin: 23,
@@ -57,17 +55,17 @@ export default StyleSheet.create({
         shadowOffset: { width: 2, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,  
-        elevation: 10
+        elevation: 10,
     },
     button: {
         borderWidth: 1,
         borderRadius: 6,
         width: 320,
         margin: 35,
+        marginTop: 0,
         padding: 7,
         alignItems: "center",
         backgroundColor: "#000",
-        top: 85
     },
     buttontext: {
         color: "#fff",
@@ -89,6 +87,7 @@ export default StyleSheet.create({
         borderRadius: 7,
         padding: 5,
         margin: 15,
+        marginBottom: 0,
         top: -90
     },
     textselect: {
@@ -105,5 +104,11 @@ export default StyleSheet.create({
         fontWeight: "bold",
         fontSize: 22,
         paddingLeft: 15
+    },
+    preview: {
+        width: 350, 
+        height: 400,
+        margin:29,
+        marginTop: -60
     }
 })

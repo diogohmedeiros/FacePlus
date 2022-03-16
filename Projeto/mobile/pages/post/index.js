@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView, Image, TouchableOpacity, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import style from './style';
 
@@ -25,8 +25,16 @@ export default function Post({ navigation }) {
                     </View>
                 </LinearGradient>
             </SafeAreaView>
+            
+            <View style={style.best}>
+                <Text style={style.bestText}>PUBLICAÇÕES</Text>
+            </View>
 
-
+            <View style={style.createpubli}>
+                <TouchableOpacity onPress={() => { navigation.navigate("Publicacao") }} style={[style.button, style.boxWithShadow]}>
+                    <Text style={style.buttontext}>Criar Publicação</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

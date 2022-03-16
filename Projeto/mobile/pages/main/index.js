@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -74,6 +74,11 @@ function MyTabBar({ state, descriptors, navigation }) {
   export default function App() {
     return (
       <NavigationContainer independent={true}>
+        <StatusBar 
+          hidden
+          style='light'
+          translucent= {false}
+        />
         <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />} 
           screenOptions={{
             headerStyle: {
@@ -83,7 +88,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             
         }}>
             <Tab.Screen 
-                name="FacePlus+" 
+                name="Feed+" 
                 component={ContainerFeed}
                 // options={{
                 //   headerTintColor: '#fff',
@@ -101,7 +106,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             />
 
             <Tab.Screen 
-                name=" FacePlus+" 
+                name="Post" 
                 component={Post}
                 // options={{
                 //   headerTintColor: '#fff',
