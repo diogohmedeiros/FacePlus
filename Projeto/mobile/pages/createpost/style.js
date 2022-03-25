@@ -110,5 +110,12 @@ export default StyleSheet.create({
         height: 400,
         margin:29,
         marginTop: -60
+    },
+    createpubli: {
+        alignItems: 'center',
+        position: 'absolute', 
+        left: 0,
+        right: 0, 
+        bottom: -23
     }
 })

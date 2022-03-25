@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, ToastAndroid, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as ImagePicker from 'expo-image-picker';
@@ -7,22 +8,18 @@ import style from './style';
 export default function Publicacao({ navigation }) {
     const [descricao, setDescricao] = useState("");
     const [localizacao, setLocalizacao] = useState("");
-    const [estabelecimento, setEstabelecimento] = useState("");
-    const [email, setEmail] = useState("");
     const [id_user, setIdUser] = useState("");
     const [imagem, setImagem] = useState(null);
 
-    const postar = () => {
+    const postar = async () => {
         let post = {
-            descricao: descricao,
-            estabelecimento: estabelecimento,
-            email: email,
-            id_user: id_user,
-            imagem: imagem,
-            localizacao: localizacao,
+            text: descricao,
+            location: localizacao,
+            id_user: (JSON.parse(await AsyncStorage.getItem("userdata")).id),
+            image: imagem,
         }
 
-        fetch('http://10.97.207.31:8080/estabelecimentos/create', {
+        fetch('http://10.87.207.9:8080/publication/create', {
             "method": "POST",
             "headers": {
                 "Content-Type": "application/json"
@@ -31,7 +28,7 @@ export default function Publicacao({ navigation }) {
         })
         .then(resp => {
             if(resp.status == 201) { 
-                return resp.json(); 
+                navigation.navigate("Post")
             }else {
                 ToastAndroid.show('Não foi possível publicar', ToastAndroid.SHORT);
             }
@@ -74,6 +71,7 @@ export default function Publicacao({ navigation }) {
                 </LinearGradient>
             </SafeAreaView>
 
+        <View style={{flex: 1}}></View>
             <ScrollView>
                 <Text style={style.desc}>Texto</Text>
                 <TextInput style={style.textinput}
@@ -87,19 +85,25 @@ export default function Publicacao({ navigation }) {
                 <Text style={style.desc2}>° É somente permitido publicar conteúdos sobre acessibilidade e dúvidas de estabelecimentos inclusivos.</Text>
                     
                 <Text style={style.desc3}>Localização</Text>
-                <TextInput style={style.localiza} />
+                <TextInput value={localizacao} onChangeText={ setLocalizacao } style={style.localiza} />
 
                 <TouchableOpacity style={style.selecionarimagem} onPress={() => { selecionarimagem() }}>
                     <Image source={require('../../assets/app/imagem.png')}/>
                     <Text style={style.textselect}>Selecionar foto</Text>
                 </TouchableOpacity>
+                
 
                 <Image style={style.preview} source={{uri: imagem}} />
-
-                <TouchableOpacity onPress={() => { navigation.navigate("Post") }} style={[style.button, style.boxWithShadow]}>
-                    <Text style={style.buttontext}>Publicar</Text>
-                </TouchableOpacity>
+                <View style={{height: 75}}></View>
             </ScrollView>
+
+            <TouchableOpacity 
+            onPress={() => { postar() }} 
+            style={[style.button, style.boxWithShadow, style.createpubli]}
+            >
+                <Text style={style.buttontext}>Publicar</Text>
+            </TouchableOpacity>
         </View>
+    
     )
 }

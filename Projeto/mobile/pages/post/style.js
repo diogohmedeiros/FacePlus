@@ -19,13 +19,14 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         margin: 10,
-        height: 42,
+        height: 35,
+        marginBottom: 2
     },
     bestText: {
         fontSize: 15,
         color: "#E50F90",
         fontWeight: "bold",
-        padding: 8,
+        padding: 5,
     },
     boxWithShadow: {
         shadowColor: '#000',
@@ -39,7 +40,7 @@ export default StyleSheet.create({
         borderRadius: 6,
         width: 320,
         margin: 20,
-        padding: 7,
+        padding: 5,
         alignItems: "center",
         backgroundColor: "#000",
     },
@@ -49,9 +50,25 @@ export default StyleSheet.create({
         fontSize: 17
     },
     createpubli: {
-        top: 497,
-        height: 81,
+        height: 75,
         alignItems: 'center',
-        backgroundColor: "rgba(255, 255, 255, 0.3)"
+        backgroundColor: 'rgba(255,255,255,0.70)',
+        position: 'absolute', 
+        left: 0,
+        right: 0, 
+        bottom: 0
+    },
+    card: {
+        marginBottom: 10,
+        margin: 11,
+        width: 390,
+        borderRadius: 10,
+        backgroundColor: "#F3F5F8"
+    },
+    textss: {
+        flexDirection: 'row',
+        margin: 10,
+        marginBottom: 7,
+        justifyContent: 'space-between',
     }
 })
