@@ -47,7 +47,6 @@ export default StyleSheet.create({
         marginBottom: 0
     },
     cardavatar: {
-        backgroundColor: '#e5e5e5', 
         width: 30, 
         height: 30, 
         borderRadius: 50,

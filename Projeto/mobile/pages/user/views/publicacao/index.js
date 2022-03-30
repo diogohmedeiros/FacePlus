@@ -6,8 +6,8 @@ import style from './style';
 
 function TabPubli({isFocused}) {
     return(
-        <View style={{flex:1, flexDirection:'row', alignItems: 'center',}}>
-            <Text style={isFocused ? {color: '#000', fontWeight: 'bold', fontSize: 13} : {color:'#000'}} >Publicações</Text>
+        <View style={{flex:1, flexDirection:'row', alignItems: 'center', width: 210, justifyContent: 'center'}}>
+            <Text style={isFocused ? {color: '#000', fontWeight: 'bold', fontSize: 13.4} : {color:'#000'}} >Publicações</Text>
         </View>
     )
 }
@@ -16,9 +16,15 @@ function PubliView({ navigation }) {
     const [lista, setLista] = useState([]);
     const [id, setId] = useState(0);
 
-    useEffect(async () => {
-        setId(JSON.parse(await AsyncStorage.getItem("userdata")).id);
-    }, [])
+    // useEffect(async () => {
+    //     setId(JSON.parse(await AsyncStorage.getItem("userdata")).id);
+    // }, [])
+
+    useEffect(
+        React.useCallback(async ()=>{
+            setId(JSON.parse(await AsyncStorage.getItem("userdata")).id);
+        },[])
+    );
 
     useFocusEffect(
         React.useCallback(() => {
@@ -34,6 +40,8 @@ function PubliView({ navigation }) {
             })
         }, [id])
     )
+
+
     
     return(
         <View style={style.container}>
@@ -53,13 +61,21 @@ function PubliView({ navigation }) {
                                 </View>
                             </View>
                             <Image source={{uri: item.image}} style={{width: 370, height: 220, margin: 9}}/>
-                            <View style={{flexDirection: 'row', margin: 10, top: -8, marginBottom: 0}}>
+                            <View style={{flexDirection: 'row', margin: 10, top: -8, marginBottom: 0,}}>
                                 <TouchableOpacity>
                                     <Image source={require('../../../../assets/app/thumbs-up.png')} style={{width: 32, height: 32}} />
                                 </TouchableOpacity>
                                 
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => { navigation.navigate("Comentario", item.id) }}>
                                     <Image source={require('../../../../assets/app/balao-de-fala.png')} style={{width: 29, height: 29, left: 9}} />
+                                </TouchableOpacity>
+                            </View>
+                            
+                            <View>
+                                <TouchableOpacity onPress={() => {  }}>
+                                    <Image source={require('../../../../assets/app/menu-pontos-vertical.png')}
+                                        style={{width: 23, height: 23, top: 4 }}
+                                    />
                                 </TouchableOpacity>
                             </View>
                         </View>

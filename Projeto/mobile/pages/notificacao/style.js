@@ -7,10 +7,10 @@ export default StyleSheet.create({
         height: "100%",
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         paddingLeft: 10,
-        top: 37
+        top: 30
     },
     textheader: {
         fontWeight: "bold",

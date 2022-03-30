@@ -5,10 +5,10 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
         width: '100%',
         height: '100%',
+        flex: 1,
     },
     perfil: {
-        backgroundColor: '#FBEAEA',
-        height: '42%',
+        backgroundColor: '#FFF3F3',
         alignItems: "center",
     },
     boxWithShadow: {
@@ -26,7 +26,8 @@ export default StyleSheet.create({
         padding: 7,
         alignItems: "center",
         backgroundColor: "#000",
-        top: 13
+        top: 215,
+        position: "absolute",
     },
     buttontext: {
         color: "#fff",
@@ -57,7 +58,7 @@ export default StyleSheet.create({
     },
     textos: {
         justifyContent: 'center',
-        right: 40,
+        right: 15,
         height: 80,
         margin: 10,
         padding: 10,
@@ -87,14 +88,17 @@ export default StyleSheet.create({
         height: 20
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         paddingLeft: 10,
-        top: 37
+        top: 30
     },
     textheader: {
         fontWeight: "bold",
         fontSize: 22,
         paddingLeft: 15,
     },
+    bio: {
+
+    }
 })

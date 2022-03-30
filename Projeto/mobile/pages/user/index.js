@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView, useWindowDimensions } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import style from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { TabPubli, PubliView } from './views/publicacao/index.js';
 import { TabMyAvaliacao, MyAvaliacaoView } from './views/avaliacao/index.js';
@@ -14,42 +15,54 @@ const renderScene = SceneMap({
 });
 
 export default function User({ navigation }) {
-    const layout = useWindowDimensions();
+    const heightPerfil = Dimensions.get('window').height * 0.39;
+    const [heightPub, setHeightPub] = useState(Dimensions.get('window').height);
 
     const [perfil, setPerfil] = useState("");
-
+    const [imagem, setImagem] = useState("")
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
         { key: 'publicacoes', title: 'Publicações' },
         { key: 'avaliacoes', title: 'Minhas Avaliações' },
     ]);
 
-    useEffect(() => {
-        const _retrieveData = async () => {
-            try {
-                // Se der merda, descomenta essa merda, e seja feliz
+    // useEffect(() => {
+    //     const _retrieveData = async () => {
+    //         try {
+    //             // Se der merda, descomenta essa merda, e seja feliz
 
-                // let settings = {
-                //     method: "POST",
-                //     body: JSON.stringify({
-                //         "email": "diogo@gmail.com",
-                //         "senha": "4321"
-                //     })
-                // }
-                // let response = await fetch("http://10.87.207.31:8080/api/login", settings);
-                // let data = await response.json();
-                // AsyncStorage.setItem('userdata', JSON.stringify(data));
+    //             // let settings = {
+    //             //     method: "POST",
+    //             //     body: JSON.stringify({
+    //             //         "email": "diogo@gmail.com",
+    //             //         "senha": "diogo"
+    //             //     })
+    //             // }
+    //             // let response = await fetch("http://10.87.207.9:8080/api/login", settings);
+    //             // let data = await response.json();
+    //             // AsyncStorage.setItem('userdata', JSON.stringify(data));
 
-                // Ai comenta isso aqui, e depois descomenta
+    //             // Ai comenta isso aqui, e depois descomenta
                 
-                const data = await AsyncStorage.getItem('userdata');
-                setPerfil(JSON.parse(data));
-            } catch (error) {
-            // Error retrieving data
-            }
-        };
-        _retrieveData();
-    }, [])
+    //             const data = await AsyncStorage.getItem('userdata');
+    //             let response = await fetch("http://10.87.207.9:8080/api/user/" + (JSON.parse(data)).id);
+    //             let dadosPerfil = await response.json();
+    //             setPerfil(dadosPerfil);
+    //         } catch (error) {
+    //         // Error retrieving data
+    //         }
+    //     };
+    //     _retrieveData();
+    // }, [])
+
+    useFocusEffect(
+        React.useCallback(async () => {
+            const data = await AsyncStorage.getItem('userdata');
+            let response = await fetch("http://10.87.207.9:8080/api/user/" + (JSON.parse(data)).id);
+            let dadosPerfil = await response.json();
+            setPerfil(dadosPerfil);
+        },[])        
+    );
 
     const renderTabBar = props => {
         return (
@@ -92,32 +105,42 @@ export default function User({ navigation }) {
                         </View>
                 </LinearGradient>
             </SafeAreaView>
-        
-            <View style={style.perfil}>
-                <View style={style.view}>
-                    <Image onPress={() => {}} source={{uri: perfil.avatar}} style={style.avatar} />
-                    <View style={style.textos}>
-                        <Text style={style.text}>{perfil.username}</Text>
-                        <Text style={style.text}>{perfil.email}</Text>
+
+            <ScrollView>
+                <View style={[style.perfil, {height: heightPerfil}]}>
+                    <View style={style.view}>
+                        <Image source={{uri: perfil.avatar}} style={style.avatar} />
+                        <View style={style.textos}>
+                            <Text style={style.text}>{perfil.username}</Text>
+                            <Text style={style.text}>{perfil.email}</Text>
+                        </View>
                     </View>
+
+                    <TouchableOpacity onPress={() => { navigation.navigate("Configuracao", perfil) }} style={style.configuracoes}>
+                        <Image source={require('../../assets/app/definicoes.png')} style={style.def}/>
+                        <Text style={style.textconf}>Configurações</Text>
+                    </TouchableOpacity>
+
+                    <View style={{width: 370, height: 65, top: -35,justifyContent: 'center'}}>
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>{perfil.biografia}</Text>
+                    </View>
+
+                    <TouchableOpacity onPress={() => { navigation.navigate("Publicacao") }} style={[style.button, style.boxWithShadow]}>
+                        <Text style={style.buttontext}>Publicar</Text>
+                    </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity onPress={() => { navigation.navigate("Configuracao") }} style={style.configuracoes}>
-                    <Image source={require('../../assets/app/definicoes.png')} style={style.def}/>
-                    <Text style={style.textconf}>Configurações</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => { navigation.navigate("Publicacao") }} style={[style.button, style.boxWithShadow]}>
-                    <Text style={style.buttontext}>Publicar</Text>
-                </TouchableOpacity>
-            </View>
-
-            <TabView
-            navigationState={{ index, routes }}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            renderTabBar={renderTabBar}
-            />
+                <View style={{flex:1, height: heightPub * 6,}}>
+                    <TabView
+                        navigationState={{ index, routes }}
+                        renderScene={renderScene}
+                        onIndexChange={(index) => {
+                            setIndex(index);
+                        }}
+                        renderTabBar={renderTabBar}
+                    />
+                </View>
+            </ScrollView>
         </View>
     )
 }

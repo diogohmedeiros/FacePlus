@@ -87,7 +87,7 @@ export default function Comentario({ navigation, route }) {
                             return(
                                 <View style={style.cards} key={index}>
                                     <View style={style.viewcomment}>
-                                        <Image style={style.cardavatar} source={{uri: item.avatar}}/>
+                                        <Image style={style.cardavatar} source={{uri: item.user.avatar}}/>
                                         <Text style={{paddingLeft: 8, fontWeight: 'bold', fontSize: 15, right: 25}}>{item.user.username}</Text>
                                         <Text style={style.commentcreated}>{hora}</Text>
                                     </View>

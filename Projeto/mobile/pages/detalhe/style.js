@@ -7,8 +7,8 @@ export default StyleSheet.create({
         height: '100%',
     },
     perfil: {
-        backgroundColor: '#FBEAEA',
-        height: '40%',
+        backgroundColor: '#FFF3F3',
+        height: '41%',
         alignItems: "center",
     },
     avaliacoes: {
@@ -66,10 +66,10 @@ export default StyleSheet.create({
         padding: 10,
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         paddingLeft: 10,
-        top: 37
+        top: 30
     },
     textheader: {
         fontWeight: "bold",

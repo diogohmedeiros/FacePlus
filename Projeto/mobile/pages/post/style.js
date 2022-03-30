@@ -7,7 +7,7 @@ export default StyleSheet.create({
         height: "100%",
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

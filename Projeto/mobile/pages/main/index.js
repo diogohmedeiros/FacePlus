@@ -50,7 +50,7 @@ function MyTabBar({ state, descriptors, navigation }) {
           }
 
           return (
-            <View key={index} style={{flex:1, height: 50, width: "100%",}} >
+            <View key={index} style={{flex:1, height: 60, width: "100%",}} >
                 <LinearGradient  start={{x: 0, y: 0.75}} end={{x: 1, y: 0.25}} colors={arrColor} style={{flex:1, height: 40, width: "100%",}}>
                     <TouchableOpacity
                     accessibilityRole="button"

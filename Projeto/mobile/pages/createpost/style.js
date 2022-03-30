@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     container: {
-        backgroundColor: '#fbeaea',
+        backgroundColor: '#FFF3F3',
         width: '100%',
         height: '100%',
         flex: 1,
@@ -95,10 +95,10 @@ export default StyleSheet.create({
         fontSize: 15,
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         paddingLeft: 10,
-        top: 37
+        top: 30
     },
     textheader: {
         fontWeight: "bold",

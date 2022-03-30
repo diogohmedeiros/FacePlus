@@ -15,7 +15,12 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         padding: 10,
         borderRadius: 6,
-        margin: 20
+        margin: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,  
+        elevation: 10
     },
     searchimage: {
         margin: 23,
@@ -26,7 +31,7 @@ export default StyleSheet.create({
     colorbusca: {
         width: "100%",
         height: 74,
-        backgroundColor: "#FBEAEA",
+        backgroundColor: "#FFF3F3",
         display: "flex",
         flexDirection: "row",
     },
@@ -90,7 +95,7 @@ export default StyleSheet.create({
         fontSize:15
     },
     header: {
-        height:85,
+        height:75,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

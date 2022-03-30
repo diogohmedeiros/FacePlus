@@ -19,7 +19,7 @@ export default function Detalhe({ navigation, route }) {
     const [estabelecimento, setEstabelecimento] = useState("");
     const [index, setIndex] = React.useState(0);
     const [routes] = React.useState([
-        { key: 'fotos', title: 'Fotos' },
+        { key: 'fotos', title: 'Publicações' },
         { key: 'avaliacoes', title: 'Avaliações' },
     ]);
     
@@ -44,7 +44,7 @@ export default function Detalhe({ navigation, route }) {
           style={{ backgroundColor:'#ffc8dd', height: 48 }}
           getLabelText={({ route }) => ""}
           renderIcon={({ route, focused, color }) => {
-              if(route.title === "Fotos"){
+              if(route.title === "Publicações"){
                 return(
                     <TabFotos
                         isFocused={focused}
@@ -88,7 +88,7 @@ export default function Detalhe({ navigation, route }) {
             </View>
             
 
-            <TouchableOpacity onPress={() => {  }} style={style.avaliacoes}>
+            <TouchableOpacity onPress={() => { navigation.navigate("Avaliacoes", estabelecimento) }} style={style.avaliacoes}>
                 <Image source={require('../../assets/app/estrela.png')} style={style.def}/>
                 <Text style={style.textconf}>Avaliar</Text>
             </TouchableOpacity>
