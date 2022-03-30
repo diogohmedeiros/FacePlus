@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { View, TouchableOpacity, Text, Image, SafeAreaView, ScrollView } from 'react-native';
+import { View, TouchableOpacity, Text, Image, SafeAreaView, ScrollView, useWindowDimensions  } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import style from './style.js';
 
+import { TabFotos, FotosView } from './views/fotos/index.js';
+import { TabAvaliacao, AvaliacaoView } from './views/avaliacoes/index.js';
 
+const renderScene = SceneMap({
+    fotos: FotosView,
+    avaliacoes: AvaliacaoView,
+});
 
 export default function Detalhe({ navigation, route }) {
+    const layout = useWindowDimensions();
+
     const { id } = route.params;
     const [estabelecimento, setEstabelecimento] = useState("");
-
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: 'fotos', title: 'Fotos' },
+        { key: 'avaliacoes', title: 'Avaliações' },
+    ]);
+    
     useEffect(() => {
-        fetch('http://10.87.207.31:8080/estabelecimentos/' + id, {
+        fetch('http://10.87.207.9:8080/establishment/' + id, {
             "method": "GET",
             "headers": {
                 "Content-Type":"application/json"
@@ -23,9 +36,33 @@ export default function Detalhe({ navigation, route }) {
         })
     }, [])
 
+    const renderTabBar = props => {
+        return (
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: '#feeafa' }}
+          style={{ backgroundColor:'#ffc8dd', height: 48 }}
+          getLabelText={({ route }) => ""}
+          renderIcon={({ route, focused, color }) => {
+              if(route.title === "Fotos"){
+                return(
+                    <TabFotos
+                        isFocused={focused}
+                    />
+                )
+              }else{
+                return(
+                    <TabAvaliacao
+                        isFocused={focused}
+                    />
+                )
+              }
+          }}
+        />
+    )};
+
     return(
         <View style={style.container}>
-            
             <SafeAreaView>
                 <LinearGradient colors={["#F51344", "#E50F90"]}>
                     <View style={style.header}>
@@ -36,16 +73,16 @@ export default function Detalhe({ navigation, route }) {
                             />
                         </TouchableOpacity>
 
-                        <Text style={style.textheader}>{estabelecimento.estabelecimento}</Text>
+                        <Text style={style.textheader}>{estabelecimento.name}</Text>
                     </View>
                 </LinearGradient>
             </SafeAreaView>
 
         <View style={style.perfil}>
             <View style={style.view}>
-                <Image source={{uri: estabelecimento.imagem}} style={style.avatar}/>
+                <Image source={{uri: estabelecimento.image}} style={style.avatar}/>
                 <View style={style.textos}>
-                    <Text style={style.text}>{estabelecimento.estabelecimento}</Text>
+                    <Text style={style.text}>{estabelecimento.name}</Text>
                     <Text style={style.text}>{estabelecimento.email}</Text>
                 </View>
             </View>
@@ -56,7 +93,14 @@ export default function Detalhe({ navigation, route }) {
                 <Text style={style.textconf}>Avaliar</Text>
             </TouchableOpacity>
         </View>
-        
+
+        <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            renderTabBar={renderTabBar}
+        />
+
         </View>
     )
 }

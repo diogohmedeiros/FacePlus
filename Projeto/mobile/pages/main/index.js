@@ -10,6 +10,7 @@ import Post from '../post';
 
 import ContainerFeed from '../../containers/containerFeed';
 import ContainerUser from '../../containers/containerUser';
+import ContainerPost from '../../containers/containerPost';
 
 function MyTabBar({ state, descriptors, navigation }) {
   
@@ -106,8 +107,8 @@ function MyTabBar({ state, descriptors, navigation }) {
             />
 
             <Tab.Screen 
-                name="Post" 
-                component={Post}
+                name="ContainerPost" 
+                component={ContainerPost}
                 // options={{
                 //   headerTintColor: '#fff',
                 //   headerTitleStyle: {

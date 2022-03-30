@@ -9,7 +9,7 @@ export default function Feed({ navigation }) {
 
         // listando os estabelecimentos do banco
         useEffect(() => {
-            fetch("http://10.87.207.31:8080/estabelecimentos", {
+            fetch("http://10.87.207.9:8080/establishment", {
                 "method": "GET",
                 "headers": {
                     "Content-Type":"application/json"
@@ -57,12 +57,21 @@ export default function Feed({ navigation }) {
 
                 <View>
                     {lista.map((item, index) => {
-                        if(item.estabelecimento.toLowerCase().includes(busca.toLowerCase())) {
+                        if(item.name.toLowerCase().includes(busca.toLowerCase())) {
                             return( 
                                 <TouchableOpacity key={index} style={style.cards} onPress={() => { navigation.navigate("Detalhe", item) }}>
-                                    <Image source={{uri: item.imagem}} style={style.imagecard}/> 
-                                    <Text style={style.nameestab}>{item.estabelecimento}</Text>
-                                    <Text style={style.mediaaval}>{item.avaliacao_media}</Text>
+                                    <Image source={{uri: item.image}} style={style.imagecard}/>
+                                    <View style={style.textview}> 
+                                        <Text style={style.nameestab}>{item.name}</Text>
+                                        <View style={style.texts}>
+                                            <Image style={{width: 20, height: 20}} source={require('../../assets/app/marcador.png')} />
+                                            <Text style={style.location}>{item.location}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={style.mediaaval}>
+                                        <Image source={require('../../assets/app/estrela.png')} style={{width: 17, height: 17, }} />
+                                        <Text style={style.text}>{item.average_rating}</Text>
+                                    </View>
                                 </TouchableOpacity> 
                             )
                         }

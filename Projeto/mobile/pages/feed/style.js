@@ -63,26 +63,31 @@ export default StyleSheet.create({
         width: 50,
         height: 50,
         margin: 15,
-        //backgroundColor: "#e5e5e5",
         borderRadius: 50
     },
     nameestab: {
         fontSize: 18,
         fontWeight: "bold",
-        right: 27
     },
     mediaaval: {
         height: 25,
         width: 50,
         borderRadius: 8,
-        textAlign: "center",
+        alignItems: 'center',
         backgroundColor: "#fff",
         shadowColor: '#000',
         shadowOffset: { width: 2, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,  
         elevation: 10,
-        margin: 15
+        margin: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    text: {
+        fontWeight: "bold",
+        right: 5,
+        fontSize:15
     },
     header: {
         height:85,
@@ -91,5 +96,15 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         paddingRight: 15,
         paddingLeft: 15
+    },
+    location: {
+        fontWeight: "bold",
+        paddingLeft: 7
+    },
+    texts: {
+        flexDirection: 'row',
+    },
+    textview: {
+        paddingRight: 50
     }
 })

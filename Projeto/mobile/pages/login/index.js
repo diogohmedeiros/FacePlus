@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, ToastAndroid } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import md5 from 'md5';
 import style from './style.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -20,7 +19,7 @@ export default function Login({ navigation }) {
             senha: senha
         }
 
-        fetch('http://10.87.207.31:8080/api/login', {
+        fetch('http://10.87.207.9:8080/api/login', {
             "method":"POST",
             "headers": {
                 "Content-Type": "application/json"
@@ -54,7 +53,7 @@ export default function Login({ navigation }) {
             senha: senha,
         }
 
-        fetch("http://10.87.207.31:8080/api/cadastro", {
+        fetch("http://10.87.207.9:8080/api/cadastro", {
             "method":"POST",
             "headers": {
                 "Content-Type":"application/json"

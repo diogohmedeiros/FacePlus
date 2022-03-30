@@ -8,7 +8,7 @@ export default StyleSheet.create({
     },
     perfil: {
         backgroundColor: '#FBEAEA',
-        height: '45%',
+        height: '42%',
         alignItems: "center",
     },
     boxWithShadow: {
@@ -26,7 +26,7 @@ export default StyleSheet.create({
         padding: 7,
         alignItems: "center",
         backgroundColor: "#000",
-        //top: 230
+        top: 13
     },
     buttontext: {
         color: "#fff",

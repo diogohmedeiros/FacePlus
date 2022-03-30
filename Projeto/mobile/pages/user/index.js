@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import style from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { TabPubli, PubliView } from './views/publicacao/index.js';
+import { TabMyAvaliacao, MyAvaliacaoView } from './views/avaliacao/index.js';
+
+const renderScene = SceneMap({
+    publicacoes: PubliView,
+    avaliacoes: MyAvaliacaoView,
+});
+
 export default function User({ navigation }) {
+    const layout = useWindowDimensions();
 
     const [perfil, setPerfil] = useState("");
+
+    const [index, setIndex] = React.useState(0);
+    const [routes] = React.useState([
+        { key: 'publicacoes', title: 'Publicações' },
+        { key: 'avaliacoes', title: 'Minhas Avaliações' },
+    ]);
 
     useEffect(() => {
         const _retrieveData = async () => {
@@ -35,6 +51,31 @@ export default function User({ navigation }) {
         _retrieveData();
     }, [])
 
+    const renderTabBar = props => {
+        return (
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: '#feeafa' }}
+          style={{ backgroundColor:'#ffc8dd', height: 48 }}
+          getLabelText={({ route }) => ""}
+          renderIcon={({ route, focused, color }) => {
+              if(route.title === "Publicações"){
+                return(
+                    <TabPubli
+                        isFocused={focused}
+                    />
+                )
+              }else{
+                return(
+                    <TabMyAvaliacao
+                        isFocused={focused}
+                    />
+                )
+              }
+          }}
+        />
+    )};
+
     return (
         <View style={style.container}>
             <SafeAreaView>
@@ -51,10 +92,10 @@ export default function User({ navigation }) {
                         </View>
                 </LinearGradient>
             </SafeAreaView>
-
+        
             <View style={style.perfil}>
                 <View style={style.view}>
-                    <Image source={{uri: perfil.avatar}} style={style.avatar} />
+                    <Image onPress={() => {}} source={{uri: perfil.avatar}} style={style.avatar} />
                     <View style={style.textos}>
                         <Text style={style.text}>{perfil.username}</Text>
                         <Text style={style.text}>{perfil.email}</Text>
@@ -70,6 +111,13 @@ export default function User({ navigation }) {
                     <Text style={style.buttontext}>Publicar</Text>
                 </TouchableOpacity>
             </View>
+
+            <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            renderTabBar={renderTabBar}
+            />
         </View>
     )
 }

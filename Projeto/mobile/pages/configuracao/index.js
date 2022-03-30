@@ -4,6 +4,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import style from './style';
 
 export default function Configuracao({ navigation }) {
+    const [imagem, setImagem] = useState("");
+    const [nome, setNome] = useState("");
+    const [senha, setSenha] = useState("");
+    const [biografia, setBiografia] = useState("");
+
+    const alterar = () => {
+        
+    }
+
     return(
         <View style={style.container}>
             <SafeAreaView>
@@ -20,6 +29,14 @@ export default function Configuracao({ navigation }) {
                     </View>
                 </LinearGradient>
             </SafeAreaView>
+
+            <View style={{flex: 1}}>
+                <View></View>
+                <TouchableOpacity>
+
+                </TouchableOpacity>
+            </View>
+
         </View>
     )
 }
