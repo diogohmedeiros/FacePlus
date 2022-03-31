@@ -9,8 +9,6 @@ document.querySelector('form').addEventListener('submit', function(e){
     e.preventDefault(); 
 });
 
-
-
 async function fazerLogin(){
     let body = {
         email: email.value,
@@ -32,5 +30,6 @@ async function fazerLogin(){
 
     if(response.status == 200){
         localStorage.setItem("id_user", data.id);
+        window.location.href = '../home';
     }
 }
