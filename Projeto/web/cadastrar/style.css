@@ -19,7 +19,7 @@ main {
     gap: 50px;
 }
 
-.login {
+.cadastrar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,10 +50,8 @@ button {
     background-color: black;
     color: #fff;
     font-weight: 700;
-}
 
-button > a {
-    color: #fff;
+    cursor: pointer;
 }
 
 .cadastre {
