@@ -50,6 +50,7 @@ button {
     background-color: black;
     color: #fff;
     font-weight: 700;
+    cursor: pointer;
 }
 
 button > a {

@@ -25,8 +25,11 @@ fetch("http://10.87.207.9:8080/establishment")
         // localEstabelecimento.innerHTML = "Jaguariúna";
 
         let avaliacao = document.createElement("p");
-        // avaliacao.innerHTML = estabelecimentos.average_rating;
-        avaliacao.innerHTML = "4.0";
+        if (estabelecimentos.average_rating != null) {
+            avaliacao.innerHTML = estabelecimentos.average_rating + ".0";
+        } else {
+            avaliacao.innerHTML = "Sem avaliações";
+        }
 
         let starIcon = document.createElement("i");
         starIcon.className = "fi fi-rr-star";

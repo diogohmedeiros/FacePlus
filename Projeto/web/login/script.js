@@ -1,6 +1,5 @@
 var email = document.getElementById("email");
 var senha = document.getElementById("senha");
-// let toentrar = document.querySelector("#toentrar");
 
 var entrar = document.getElementById("entrar").addEventListener("click", () => {
     fazerLogin();
@@ -31,10 +30,6 @@ async function fazerLogin(){
 
     if(response.status == 200){
         localStorage.setItem("id_user", data.id);
-        window.location.href = '../home';
+        window.location.href = "../home";
     }
 }
-
-// toentrar.addEventListener("click", () => {
-//     window.location.href = "../home"
-// })

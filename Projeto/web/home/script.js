@@ -1,4 +1,5 @@
 var listaEstabelecimentos = document.querySelector(".lista-estabelecimentos");
+// var nav =  = document.querySelector(
 
 fetch("http://10.87.207.9:8080/establishment")
 .then(resp => { return resp.json(); })
@@ -29,7 +30,6 @@ fetch("http://10.87.207.9:8080/establishment")
         let localIcon = document.createElement("i");
         localIcon.className = "fi fi-rs-marker";
 
-
         let avaliacaoAcessilbilidade = document.createElement("div");
         avaliacaoAcessilbilidade.className = "avaliacao-acessilbilidade";
 
@@ -40,8 +40,11 @@ fetch("http://10.87.207.9:8080/establishment")
         starIcon.className = "fi fi-rr-star";
 
         let avaliacaoP = document.createElement("p");
-        // localEstabelecimento.innerHTML = estabelecimentos.location;
-        avaliacaoP.innerHTML = "4.0";
+        if (estabelecimentos.average_rating != null) {
+            avaliacaoP.innerHTML = estabelecimentos.average_rating + ".0";
+        } else {
+            avaliacaoP.innerHTML = "Sem avaliações";
+        }
             
         let tipoAcessibilidade = document.createElement("div");
         tipoAcessibilidade.className = "tipo-acessibilidade";
