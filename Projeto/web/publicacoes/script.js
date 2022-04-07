@@ -1,65 +1,4 @@
 var melhoresAvaliacoes = document.querySelector(".melhores-avaliacoes");
-const trocarFoto = document.querySelector("#trocar_foto");
-const foto = document.querySelector("#foto");
-const imgUser = document.querySelector("#imgUser")
-
-var tominhasavaliacoes = document.querySelector(".tominhasavaliacoes")
-var topublicacoes = document.querySelector(".topublicacoes")
-
-
-tominhasavaliacoes.addEventListener("click", () => {
-    window.location.href = "../usuario/avaliacoes.html"
-})
-
-topublicacoes.addEventListener("click", () => {
-    window.location.href = "../usuario/index.html"
-})
-
-const idUser = JSON.parse(localStorage.getItem('id_user'));
-
-var imagem = "";
-
-trocarFoto.addEventListener("click", () => {
-    foto.click();
-});
-
-foto.addEventListener("change", (e) => {
-    let file = e.target.files[0];
-
-    let reader = new FileReader();
-
-    reader.onload = (data) => {
-        //console.log(data.target.result);
-        imagem = data.target.result;
-        imgUser.src = imagem;
-    }
-
-    reader.readAsDataURL(file);
-});
-
-const escolherImagem = document.querySelector("#escolher-imagem");
-const fotoPublicar = document.querySelector("#foto-publicar");
-const imgPubli = document.querySelector("#imgPubli")
-
-var imagemP = "";
-
-escolherImagem.addEventListener("click", () => {
-    fotoPublicar.click();
-});
-
-fotoPublicar.addEventListener("change", (e) => {
-    let file = e.target.files[0];
-
-    let reader = new FileReader();
-
-    reader.onload = (data) => {
-        //console.log(data.target.result);
-        imagemP = data.target.result;
-        imgPubli.src = imagemP;
-    }
-
-    reader.readAsDataURL(file);
-});
 
 fetch("http://10.87.207.9:8080/establishment")
 .then(resp => { return resp.json(); })
@@ -107,3 +46,19 @@ fetch("http://10.87.207.9:8080/establishment")
         })
     })
 })
+
+function buscar () {
+    let oculta = document.querySelectorAll(".card-estabelecimentos")
+
+    let busca = document.querySelector("#busca").value.toLowerCase();
+
+    let rows = document.querySelectorAll(".p-nome-estabelicimento");
+
+    for(let i = 0; i<rows.length; i++) {
+        if(rows[i].innerHTML.toString().toLowerCase().includes(busca)) {
+            oculta[i].style.display = "grid";
+        }else {
+            oculta[i].style.display = "none";
+        }
+    }
+}

@@ -172,6 +172,7 @@ main {
     border-bottom: #E2E2E2 solid 5px;
     text-align: center;
     padding: 8px;
+    cursor: pointer;
 }
 
 .avaliacoes-fotos > div:hover {
@@ -263,63 +264,6 @@ main {
 
 .publicacao {
     max-width: 100%;
-}
-
-.melhores-avaliacoes {
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.200);
-
-    background-color: #ffffff;
-    font-size: 10px;
-
-    display: grid;
-
-    align-self:flex-start;
-}
-
-.melhores-avaliacoes > h2 {
-    display: grid;
-    grid-template-columns: 0fr 1fr;
-    gap: 5px;
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-.sugestao {
-    display: grid;
-    grid-template-columns: 0fr 1fr 0fr;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    font-size: 14px;
-    border-bottom: #E50F90 solid 2px;
-    padding: 10px;
-    font-size: 12px;
-
-    cursor: pointer;
-}
-
-.foto-sugestao {
-    width: 35px;
-    height: 35px;
-    background-color: rgb(104, 104, 104);
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.toavaliacoes {
-    cursor: pointer;
-}
-
-.tofotos {
-    cursor: pointer;
-}
-
-.svg {
-    width: 20px;
-    color: rgb(255, 0, 0);
 }
 
 @media (max-width: 1700px){

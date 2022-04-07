@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../global/style.css">
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
-    <title>Perfil</title>
+    <title>Usuário</title>
 </head>
 <body>
     
@@ -55,26 +55,23 @@
                             <p>4</p>
                         </div>
                         <div>
-                            <p class="tominhasavaliacoes">Minhas Avaliações</p>
+                            <p class="tominhasavaliacoes">Minhas Avaliacoes</p>
                         </div>
                     </div>
 
                     <!-- Avaliações -->
                     <div class="avaliar">
                         <div>
-                            <p>Faça a sua avaliação</p>
+                            <p>Publicar</p>
                         </div>
                         <div class="fazer-avaliacao">
                             <div>
                                 <textarea id="comentario" name="comentario" rows="4" cols="30">Comente...</textarea>
-                                <div class="estrelas">
-                                    <i class="fi fi-rr-star"></i>
-                                    <i class="fi fi-rr-star"></i>
-                                    <i class="fi fi-rr-star"></i>
-                                    <i class="fi fi-rr-star"></i>
-                                    <i class="fi fi-rr-star"></i>
-                                </div>
-                                <button class="enviar" onclick="comentar()">Enviar</button>
+                                
+                                <img id="imgPubli" alt="">
+                                <input type="file" id="foto-publicar" hidden>
+                                <button id="escolher-imagem">Escolher Imagem</button>
+                                <button class="enviar" onclick="Enviar()">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -90,65 +87,10 @@
                             </div>
                             <div>
                                 <p>Muito boa comida. Só isso.</p>
+                                <img id="imgPubli" alt="" src="../assets/posts/ronald-mcdonald.jpg">
                             </div>
                         </div>
                     </div>
-                    
-
-                    <!-- Fotos -->
-
-                    <!-- <div class="card">
-                        <div>
-                            <div class="usuario-card">
-                                <img class="foto-sugestao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                                <p class="perfil-nome">McDonald's</p>
-                                <p class="hora">3h</p>
-                            </div>
-                        </div>
-                        <img class="publicacao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="usuario-card">
-                                <img class="foto-sugestao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                                <p class="perfil-nome">McDonald's</p>
-                                <p class="hora">3h</p>
-                            </div>
-                        </div>
-                        <img class="publicacao" src="../assets/posts/mcdonalds.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="usuario-card">
-                                <img class="foto-sugestao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                                <p class="perfil-nome">McDonald's</p>
-                                <p class="hora">3h</p>
-                            </div>
-                        </div>
-                        <img class="publicacao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="usuario-card">
-                                <img class="foto-sugestao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                                <p class="perfil-nome">McDonald's</p>
-                                <p class="hora">3h</p>
-                            </div>
-                        </div>
-                        <img class="publicacao" src="../assets/posts/mcdonalds.jpg" alt="">
-                    </div>
-                    <div class="card">
-                        <div>
-                            <div class="usuario-card">
-                                <img class="foto-sugestao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                                <p class="perfil-nome">McDonald's</p>
-                                <p class="hora">3h</p>
-                            </div>
-                        </div>
-                        <img class="publicacao" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-                    </div> -->
-
                 </div>
 
                 <div class="melhores-avaliacoes">

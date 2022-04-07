@@ -1,6 +1,18 @@
 var melhoresAvaliacoes = document.querySelector(".melhores-avaliacoes");
 var teste = document.querySelector(".teste");
 
+var toavaliacoes = document.querySelector(".toavaliacoes")
+var tofotos = document.querySelector(".tofotos")
+
+
+toavaliacoes.addEventListener("click", () => {
+    window.location.href = "../perfil/index.html"
+})
+
+tofotos.addEventListener("click", () => {
+    window.location.href = "../perfil/fotos.html"
+})
+
 fetch("http://10.87.207.9:8080/establishment")
 .then(resp => { return resp.json(); })
 .then(data => {

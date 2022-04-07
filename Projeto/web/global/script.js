@@ -1,16 +1,16 @@
 var home = document.querySelector(".fi-sr-home")
-var toavaliacoes = document.querySelector(".toavaliacoes")
-var tofotos = document.querySelector(".tofotos")
+var publicacoes = document.querySelector(".fi-sr-megaphone")
+var usuario = document.querySelector(".fi-ss-user")
 
 
 home.addEventListener("click", () => {
     window.location.href = "../home"
 })
 
-toavaliacoes.addEventListener("click", () => {
-    window.location.href = "../perfil/index.html"
+publicacoes.addEventListener("click", () => {
+    window.location.href = "../publicacoes"
 })
 
-tofotos.addEventListener("click", () => {
-    window.location.href = "../perfil/fotos.html"
+usuario.addEventListener("click", () => {
+    window.location.href = "../usuario"
 })
