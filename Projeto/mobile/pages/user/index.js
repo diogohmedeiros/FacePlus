@@ -68,8 +68,8 @@ export default function User({ navigation }) {
         return (
         <TabBar
           {...props}
-          indicatorStyle={{ backgroundColor: '#feeafa' }}
-          style={{ backgroundColor:'#ffc8dd', height: 48 }}
+          indicatorStyle={{ backgroundColor: '#e9e9e9' }}
+          style={{ backgroundColor:'#fff3f3', height: 48, borderTopWidth: 1, borderTopColor: '#e5e5e5' }}
           getLabelText={({ route }) => ""}
           renderIcon={({ route, focused, color }) => {
               if(route.title === "Publicações"){

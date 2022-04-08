@@ -17,7 +17,7 @@ export default StyleSheet.create({
         height: 30, 
         borderRadius: 50,
         padding: 7,
-        right: 5
+        right: 20
     },
     viewevaluation: {
         flexDirection: 'row', 
@@ -27,6 +27,25 @@ export default StyleSheet.create({
     textcomment: {
         top: 5,
         padding: 7,
-        fontSize: 15
+        fontSize: 15,
+        left: 15
     },
+    nota: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        left: 11
+    },
+    vieweva: {
+        flexDirection: 'row',
+        borderRadius: 7,
+        width: 53,
+        padding: 3,
+        backgroundColor: "#fff",
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 10,  
+        elevation: 10,
+    }
 })

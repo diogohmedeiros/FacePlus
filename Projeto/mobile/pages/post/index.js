@@ -6,6 +6,7 @@ import style from './style';
 
 export default function Post({ navigation }) {
     const [lista, setLista] = useState([]);
+    // const [imagem, setImagem] = useState(require('../../assets/app/thumbs-up.png'));
 
     // useEffect(() => {
     //     fetch("http://10.87.207.9:8080/publication", {

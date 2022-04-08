@@ -8,7 +8,6 @@ import style from './style';
 export default function Publicacao({ navigation }) {
     const [descricao, setDescricao] = useState("");
     const [localizacao, setLocalizacao] = useState("");
-    const [id_user, setIdUser] = useState("");
     const [imagem, setImagem] = useState(null);
 
     const postar = async () => {

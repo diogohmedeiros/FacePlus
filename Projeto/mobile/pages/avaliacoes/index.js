@@ -80,7 +80,7 @@ export default function Avaliacoes({ navigation, route }) {
                     />
 
                     <View style={style.evapubli}>
-                        <TouchableOpacity onPress={() => { avaliar() }} style={[style.button, style.boxWithShadow]}>
+                        <TouchableOpacity onPress={() => { avaliar(), navigation.navigate("Detalhe", id) }} style={[style.button, style.boxWithShadow]}>
                             <Text style={style.buttontext}>Avaliar</Text>
                         </TouchableOpacity>
                     </View>

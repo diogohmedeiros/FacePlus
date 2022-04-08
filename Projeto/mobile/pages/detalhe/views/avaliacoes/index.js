@@ -11,34 +11,23 @@ function TabAvaliacao({isFocused}) {
     )
 }
 
-function AvaliacaoView() {
+function AvaliacaoView({ evaluations }) {
     const [lista, setLista] = useState([]);
-
-    // useEffect(() => {
-    //     fetch("http://10.87.207.9:8080/establishment", {
-    //         "method": "GET",
-    //         "headers": {
-    //             "Content-Type":"application/json"
-    //         }
-    //     })
-    //     .then(resp => { return resp.json() })
-    //     .then(data => { setLista(data) })
-    //     .catch(err => {
-    //     })
-    // }, [])
 
     return(
         <View style={style.container}>
-            <View style={{flex: 1}}>
                 <ScrollView>
                     <View>
-                        {lista.map((item, index) => {
+                        {evaluations.map((item, index) => {
                             return(
                                 <View style={style.cards} key={index}>
                                     <View style={style.viewevaluation}>
                                         <Image style={style.cardavatar} source={{uri: item.user.avatar}}/>
-                                        <Text style={{paddingLeft: 8, fontWeight: 'bold', fontSize: 15, right: 25}}>{item.user.username}</Text>
-                                        <Text style={style.nota}>{item.note}</Text>
+                                        <Text style={{paddingLeft: 8, fontWeight: 'bold', fontSize: 15, right: 75}}>{item.user.username}</Text>
+                                        <View style={style.vieweva}>
+                                            <Image source={require('../../../../assets/app/estrela.png')} style={{width: 18, height: 18, left: 3}}/>
+                                            <Text style={style.nota}>{item.note}</Text>
+                                        </View>
                                     </View>
                                     <Text style={style.textcomment}>{item.text}</Text>
                                 </View>
@@ -46,7 +35,6 @@ function AvaliacaoView() {
                         })}
                     </View>
                 </ScrollView>
-            </View>
         </View>
     )
 }

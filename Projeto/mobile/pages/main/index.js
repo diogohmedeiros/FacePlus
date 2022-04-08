@@ -4,9 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 import style from './style.js';
-import Icon from "react-native-vector-icons/AntDesign";
+import Icon from "react-native-vector-icons/Entypo";
 
-import Post from '../post';
 
 import ContainerFeed from '../../containers/containerFeed';
 import ContainerUser from '../../containers/containerUser';
@@ -40,13 +39,13 @@ function MyTabBar({ state, descriptors, navigation }) {
           };
 
           let arrColor = ["#F51344", "#F0125C"];
-          let icon = <Icon name="home" color={(selected == index ) ? "#495057" : "#000"} size={26} />;
+          let icon = <Icon name="home" color={(selected == index ) ? "#FAD2D2" : "#000"} size={30} />;
           if(index == 1) {
             arrColor = ["#F0125C", "#EB1075"];
-            icon = <Icon name="pluscircleo"  color={(selected == index ) ? "#495057" : "#000"} size={26} />;
+            icon = <Icon name="circle-with-plus"  color={(selected == index ) ? "#FAD2D2" : "#000"} size={30} />;
           }else if(index == 2) {
             arrColor = ["#EB1075", "#E50F90"];
-            icon = <Icon name="user" color={(selected == index ) ? "#495057" : "#000"} size={26} />;
+            icon = <Icon name="user" color={(selected == index ) ? "#FAD2D2" : "#000"} size={26} />;
           }
 
           return (
@@ -91,37 +90,11 @@ function MyTabBar({ state, descriptors, navigation }) {
             <Tab.Screen 
                 name="Feed+" 
                 component={ContainerFeed}
-                // options={{
-                //   headerTintColor: '#fff',
-                //   headerTitleStyle: {
-                //     fontWeight: 'bold',
-                //     fontSize: 28,
-                // },
-                // headerRight: () => (
-                //   <TouchableOpacity onPress={() => alert('this is buton')} >
-                //     <Image source={require('../../assets/app/sino-de-notificacao.png')}
-                //     style={style.notif} />
-                //   </TouchableOpacity>
-                // )
-                // }}
             />
 
             <Tab.Screen 
                 name="ContainerPost" 
                 component={ContainerPost}
-                // options={{
-                //   headerTintColor: '#fff',
-                //   headerTitleStyle: {
-                //     fontWeight: 'bold',
-                //     fontSize: 28,
-                // },
-                // headerRight: () => (
-                //   <TouchableOpacity onPress={() => alert('this is buton')} >
-                //     <Image source={require('../../assets/app/sino-de-notificacao.png')}
-                //     style={style.notif} />
-                //   </TouchableOpacity>
-                // ),
-                // }}
             />
 
             <Tab.Screen 

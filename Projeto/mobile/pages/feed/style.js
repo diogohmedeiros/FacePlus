@@ -73,6 +73,7 @@ export default StyleSheet.create({
     nameestab: {
         fontSize: 18,
         fontWeight: "bold",
+        width: 110
     },
     mediaaval: {
         height: 25,
@@ -87,6 +88,7 @@ export default StyleSheet.create({
         elevation: 10,
         margin: 15,
         flexDirection: 'row',
+        position: 'relative',
         justifyContent: 'space-around',
     },
     text: {
@@ -110,6 +112,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     textview: {
-        paddingRight: 50
+        paddingRight: 100
     }
 })

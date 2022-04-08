@@ -28,7 +28,6 @@ export default function Comentario({ navigation, route }) {
             let hora_atual = new Date().toLocaleTimeString().split(":")[0];
             let dia_atual =  new Date().toLocaleDateString().split("/")[1];
             let teste = new Date().toLocaleString("pt-BR");
-            // console.log(teste);
 
             setHora(teste);
             lista.map((item, index) =>{
