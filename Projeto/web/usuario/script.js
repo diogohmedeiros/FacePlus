@@ -6,7 +6,9 @@ const imgUser = document.querySelector("#imgUser")
 var tominhasavaliacoes = document.querySelector(".tominhasavaliacoes")
 var topublicacoes = document.querySelector(".topublicacoes")
 
+var id = localStorage.getItem('id_user')
 
+carregarTudo()
 tominhasavaliacoes.addEventListener("click", () => {
     window.location.href = "../usuario/avaliacoes.html"
 })
@@ -28,10 +30,31 @@ foto.addEventListener("change", (e) => {
 
     let reader = new FileReader();
 
+
     reader.onload = (data) => {
-        //console.log(data.target.result);
-        imagem = data.target.result;
-        imgUser.src = imagem;
+
+        let obj = {
+            // id_user: id,
+            image: data.target.result,
+        }
+
+        fetch('http://10.87.207.9:8080/api/update', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj),
+        }).then(res => {
+            if(res.status == 200){
+                imagem = data.target.result;
+                imgUser.src = imagem;
+            }else{
+                alert("Algo deu errado :(")
+            }
+        }).then(data => {
+        }).catch(err => {
+        })
+        
     }
 
     reader.readAsDataURL(file);
@@ -107,3 +130,21 @@ fetch("http://10.87.207.9:8080/establishment")
         })
     })
 })
+
+
+function carregarTudo() {
+    console.log(id)
+    
+    fetch("http://10.87.207.9:8080/api/user/" + id)
+    .then(res => {
+        return res.json();
+    }).then(data =>{
+        document.querySelector('.foto').src = data.avatar;
+        document.querySelector('.perfil-nome').innerHTML = data.username;
+        document.querySelector('.perfil-email').innerHTML = data.email;
+        document.querySelector('.tipo-acessibilidade').innerHTML = data.biografia;
+
+    }).catch(err =>[
+        console.log(err)
+    ])
+}

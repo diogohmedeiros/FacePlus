@@ -4,6 +4,8 @@ var teste = document.querySelector(".teste");
 var toavaliacoes = document.querySelector(".toavaliacoes")
 var tofotos = document.querySelector(".tofotos")
 
+var id = 1;
+
 
 toavaliacoes.addEventListener("click", () => {
     window.location.href = "../perfil/index.html"
@@ -60,43 +62,32 @@ fetch("http://10.87.207.9:8080/establishment")
     })
 })
 
-// let sugestao = document.createElement("div");
-// sugestao.className = "sugestao";
+function fotos() {
+    let card = document.querySelector('.card').cloneNode(true);
+    let conteudo = document.querySelector('.conteudo-perfil')
 
-// let fotoEstabelecimento = document.createElement("img");
-// fotoEstabelecimento.className = "foto-sugestao";            
-// // fotoEstabelecimento.setAttribute("src", estabelecimentos.image)
-// fotoEstabelecimento.setAttribute("src", "../assets/posts/mcdonalds.jpg")
 
-// let nomeLocalizacao = document.createElement("div");
-// nomeLocalizacao.className = "nome-localizacao";
+    fetch("http://10.87.207.9:8080/establishment/pub/")
+    .then(res => {
+        return res.json();
+    }).then(data =>{
+        console.log(card.querySelector('img'))
+        data.forEach(conta => {
+            if(conta.establishment.id == id){
+                card.querySelector('div').querySelector('div').querySelector('.foto-sugestao').src = conta.establishment.image
+                card.querySelector('div').querySelector('div').querySelector('.perfil-nome').innerHTML = conta.establishment.name
+                // card.querySelector('.publicacao').src = conta.establishment.image
 
-// let nome = document.createElement("p");
-// // localEstabelecimento.innerHTML = estabelecimentos.name;
-// nome.innerHTML = "McDonalds";
+                conteudo.appendChild(card)
+            }else{
+            }
+            
+        })
+    }).catch(err =>[
+        console.log(err)
+    ])
 
-// let localEstabelecimento = document.createElement("p");
-// // localEstabelecimento.innerHTML = estabelecimentos.location;
-// localEstabelecimento.innerHTML = "Jaguariúna";
-
-// let avaliacao = document.createElement("p");
-// // localEstabelecimento.innerHTML = estabelecimentos.name;
-// avaliacao.innerHTML = "4.0";
-
-// let starIcon = document.createElement("i");
-// starIcon.className = "fi fi-rr-star";
-
-// avaliacao.appendChild(starIcon);
-// nomeLocalizacao.appendChild(nome);
-// nomeLocalizacao.appendChild(localEstabelecimento);
-// sugestao.appendChild(fotoEstabelecimento);
-// sugestao.appendChild(nomeLocalizacao);
-// sugestao.appendChild(avaliacao);
-// melhoresAvaliacoes.appendChild(sugestao);
-
-// sugestao.addEventListener("click", () => {
-//     window.location.href = "../perfil"
-// })
+}
 
 function comentar() {
     let comentar = false;
