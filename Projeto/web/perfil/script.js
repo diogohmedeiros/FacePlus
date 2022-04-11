@@ -4,7 +4,9 @@ var teste = document.querySelector(".teste");
 var toavaliacoes = document.querySelector(".toavaliacoes")
 var tofotos = document.querySelector(".tofotos")
 
-var id = 1;
+// var infoPerfil = document.querySelector(".info-perfil")
+
+var id = localStorage.getItem("id_estabelecimento");
 
 
 toavaliacoes.addEventListener("click", () => {
@@ -15,32 +17,32 @@ tofotos.addEventListener("click", () => {
     window.location.href = "../perfil/fotos.html"
 })
 
-fetch("http://10.87.207.9:8080/establishment")
+fetch("http://10.87.207.9:8080/establishment/" + id)
 .then(resp => { return resp.json(); })
 .then(data => {
-    data.forEach(estabelecimentos => {
+        console.log(data);
         let sugestao = document.createElement("div");
         sugestao.className = "sugestao";
 
         let fotoEstabelecimento = document.createElement("img");
         fotoEstabelecimento.className = "foto-sugestao";            
-        fotoEstabelecimento.setAttribute("src", estabelecimentos.image)
+        fotoEstabelecimento.setAttribute("src", data.image)
         // fotoEstabelecimento.setAttribute("src", "../assets/posts/mcdonalds.jpg")
 
         let nomeLocalizacao = document.createElement("div");
         nomeLocalizacao.className = "nome-localizacao";
 
         let nome = document.createElement("p");
-        nome.innerHTML = estabelecimentos.name;
+        nome.innerHTML = data.name;
         // nome.innerHTML = "McDonalds";
 
         let localEstabelecimento = document.createElement("p");
-        localEstabelecimento.innerHTML = estabelecimentos.location;
+        localEstabelecimento.innerHTML = data.location;
         // localEstabelecimento.innerHTML = "Jaguariúna";
 
         let avaliacao = document.createElement("p");
-        if (estabelecimentos.average_rating != null) {
-            avaliacao.innerHTML = estabelecimentos.average_rating + ".0";
+        if (data.average_rating != null) {
+            avaliacao.innerHTML = data.average_rating + ".0";
         } else {
             avaliacao.innerHTML = "Sem avaliações";
         }
@@ -59,7 +61,6 @@ fetch("http://10.87.207.9:8080/establishment")
         sugestao.addEventListener("click", () => {
             window.location.href = "../perfil"
         })
-    })
 })
 
 function fotos() {
@@ -119,7 +120,7 @@ function comentar() {
     
         let perfilNome = document.createElement("p");
         perfilNome.className = "perfil-nome";
-        perfilNome.innerHTML = "Diogo";
+        perfilNome.innerHTML = data.name;
     
         let hora = document.createElement("p");
         hora.className = "hora";
@@ -136,3 +137,15 @@ function comentar() {
     }
 
 }
+
+fetch("http://10.87.207.9:8080/establishment/" + id)
+.then(resp => { return resp.json(); })
+.then(data => {
+    console.log(data)
+    document.querySelector('#avatar').src = data.image;
+    document.querySelector('.perfil-nome').innerHTML = data.name;
+    document.querySelector('.perfil-email').innerHTML = data.email;
+    // document.querySelector('.biografia').innerHTML = data.biografia;
+
+
+})

@@ -17,8 +17,6 @@ topublicacoes.addEventListener("click", () => {
     window.location.href = "../usuario/index.html"
 })
 
-const idUser = JSON.parse(localStorage.getItem('id_user'));
-
 var imagem = "";
 
 trocarFoto.addEventListener("click", () => {
@@ -148,3 +146,36 @@ function carregarTudo() {
         console.log(err)
     ])
 }
+
+async function criar(){
+    let url = "http://10.87.207.9:8080/publication/create";
+
+    let base64 = "";
+
+    let json = {
+        text: document.getElementById("comentario").value,
+        location: document.getElementById("location").value,
+        id_user: localStorage.getItem("id_user"),
+        image: base64
+    }
+
+    let settings = {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(json),
+    }
+
+    const response = await fetch(url, settings);
+
+    if(response.status == 201){
+        //sucesso
+    }else{
+        //falha
+    }
+}
+
+document.getElementById("submit").addEventListener("click", () => {
+    criar();
+})

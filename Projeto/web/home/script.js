@@ -8,6 +8,7 @@ fetch("http://10.87.207.9:8080/establishment")
     data.forEach(estabelecimentos => {
         let card = document.createElement("div");
         card.className = "card-estabelecimentos";
+        card.id = estabelecimentos.id;
 
         let fotoEstabelecimento = document.createElement("img");
         fotoEstabelecimento.className = "foto-estabelecimento";            
@@ -76,7 +77,8 @@ fetch("http://10.87.207.9:8080/establishment")
         listaEstabelecimentos.appendChild(card);
         
         card.addEventListener("click", () => {
-            window.location.href = "../perfil"
+            localStorage.setItem("id_estabelecimento", estabelecimentos.id);
+            window.location.href = `../perfil`;
         })
     })
 })

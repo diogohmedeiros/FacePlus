@@ -62,3 +62,12 @@ function buscar () {
         }
     }
 }
+
+async function publicacoes(){
+    const response = await fetch("http://10.87.207.9:8080/publication/");
+    const data = await response.json();
+    console.log(data);
+}
+
+publicacoes();
+
