@@ -17,32 +17,34 @@ tofotos.addEventListener("click", () => {
     window.location.href = "../perfil/fotos.html"
 })
 
-fetch("http://10.87.207.9:8080/establishment/" + id)
+
+
+fetch("http://10.87.207.9:8080/establishment")
 .then(resp => { return resp.json(); })
 .then(data => {
-        console.log(data);
+    data.forEach(estabelecimentos => {
         let sugestao = document.createElement("div");
         sugestao.className = "sugestao";
 
         let fotoEstabelecimento = document.createElement("img");
         fotoEstabelecimento.className = "foto-sugestao";            
-        fotoEstabelecimento.setAttribute("src", data.image)
+        fotoEstabelecimento.setAttribute("src", estabelecimentos.image)
         // fotoEstabelecimento.setAttribute("src", "../assets/posts/mcdonalds.jpg")
 
         let nomeLocalizacao = document.createElement("div");
         nomeLocalizacao.className = "nome-localizacao";
 
         let nome = document.createElement("p");
-        nome.innerHTML = data.name;
+        nome.innerHTML = estabelecimentos.name;
         // nome.innerHTML = "McDonalds";
 
         let localEstabelecimento = document.createElement("p");
-        localEstabelecimento.innerHTML = data.location;
+        localEstabelecimento.innerHTML = estabelecimentos.location;
         // localEstabelecimento.innerHTML = "Jaguariúna";
 
         let avaliacao = document.createElement("p");
-        if (data.average_rating != null) {
-            avaliacao.innerHTML = data.average_rating + ".0";
+        if (estabelecimentos.average_rating != null) {
+            avaliacao.innerHTML = estabelecimentos.average_rating + ".0";
         } else {
             avaliacao.innerHTML = "Sem avaliações";
         }
@@ -61,6 +63,7 @@ fetch("http://10.87.207.9:8080/establishment/" + id)
         sugestao.addEventListener("click", () => {
             window.location.href = "../perfil"
         })
+    })
 })
 
 function fotos() {
@@ -120,7 +123,7 @@ function comentar() {
     
         let perfilNome = document.createElement("p");
         perfilNome.className = "perfil-nome";
-        perfilNome.innerHTML = data.name;
+        perfilNome.innerHTML = "Diogo Medeiros";
     
         let hora = document.createElement("p");
         hora.className = "hora";

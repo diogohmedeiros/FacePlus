@@ -152,9 +152,15 @@ main {
     width: 100%;
 }
 
+.model {
+    display: none;
+}
+
 .card-teste {
+    display: grid;
+    gap: 15px;
+    align-self: start;
     grid-column: 2;
-    grid-row: 1 / 3;
 }
 
 .card-comentario {
@@ -176,6 +182,10 @@ main {
     align-items: center;
     gap: 15px;
     padding: 10px 0;
+}
+
+.hora {
+    font-size: 14px;
 }
 
 #imgPubli {

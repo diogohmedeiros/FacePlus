@@ -1,6 +1,7 @@
-var home = document.querySelector(".fi-sr-home")
-var publicacoes = document.querySelector(".fi-sr-megaphone")
-var usuario = document.querySelector(".fi-ss-user")
+var home = document.querySelector(".fi-sr-home");
+var publicacoes = document.querySelector(".fi-sr-megaphone");
+var usuario = document.querySelector(".fi-ss-user");
+var sair = document.querySelector(".sair");
 
 // var entrar = document.querySelector("#entrar")
 
@@ -30,3 +31,8 @@ fetch("http://10.87.207.9:8080/api/user/" + id)
 }).catch(err =>[
     console.log(err)
 ])
+
+sair.addEventListener("click", () => {
+    window.location.href = "../login"
+    storage.clear();
+})

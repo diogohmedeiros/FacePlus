@@ -179,3 +179,21 @@ async function criar(){
 document.getElementById("submit").addEventListener("click", () => {
     criar();
 })
+
+function events(){
+    document.getElementById("escolher-imagem").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        document.getElementById("escolher-imagem").dataset.content = file.name;
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            base64 = reader.result;
+            
+        };
+        
+        reader.readAsDataURL(file);
+    });
+}
+
+function init(){
+    events();
+}
