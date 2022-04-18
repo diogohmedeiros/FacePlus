@@ -6,7 +6,9 @@ const imgUser = document.querySelector("#imgUser")
 var tominhasavaliacoes = document.querySelector(".tominhasavaliacoes")
 var topublicacoes = document.querySelector(".topublicacoes")
 
+var id = localStorage.getItem('id_user')
 
+carregarTudo()
 tominhasavaliacoes.addEventListener("click", () => {
     window.location.href = "../usuario/avaliacoes.html"
 })
@@ -14,8 +16,6 @@ tominhasavaliacoes.addEventListener("click", () => {
 topublicacoes.addEventListener("click", () => {
     window.location.href = "../usuario/index.html"
 })
-
-const idUser = JSON.parse(localStorage.getItem('id_user'));
 
 var imagem = "";
 
@@ -28,10 +28,31 @@ foto.addEventListener("change", (e) => {
 
     let reader = new FileReader();
 
+
     reader.onload = (data) => {
-        //console.log(data.target.result);
-        imagem = data.target.result;
-        imgUser.src = imagem;
+
+        let obj = {
+            // id_user: id,
+            image: data.target.result,
+        }
+
+        fetch('http://10.87.207.9:8080/api/update', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj),
+        }).then(res => {
+            if(res.status == 200){
+                imagem = data.target.result;
+                imgUser.src = imagem;
+            }else{
+                alert("Algo deu errado :(")
+            }
+        }).then(data => {
+        }).catch(err => {
+        })
+        
     }
 
     reader.readAsDataURL(file);
@@ -107,3 +128,72 @@ fetch("http://10.87.207.9:8080/establishment")
         })
     })
 })
+
+
+function carregarTudo() {
+    console.log(id)
+    
+    fetch("http://10.87.207.9:8080/api/user/" + id)
+    .then(res => {
+        return res.json();
+    }).then(data =>{
+        document.querySelector('.foto').src = data.avatar;
+        document.querySelector('.perfil-nome').innerHTML = data.username;
+        document.querySelector('.perfil-email').innerHTML = data.email;
+        document.querySelector('.tipo-acessibilidade').innerHTML = data.biografia;
+
+    }).catch(err =>[
+        console.log(err)
+    ])
+}
+
+async function criar(){
+    let url = "http://10.87.207.9:8080/publication/create";
+
+    let base64 = "";
+
+    let json = {
+        text: document.getElementById("comentario").value,
+        location: document.getElementById("location").value,
+        id_user: localStorage.getItem("id_user"),
+        image: base64
+    }
+
+    let settings = {
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": JSON.stringify(json),
+    }
+
+    const response = await fetch(url, settings);
+
+    if(response.status == 201){
+        //sucesso
+    }else{
+        //falha
+    }
+}
+
+document.getElementById("submit").addEventListener("click", () => {
+    criar();
+})
+
+function events(){
+    document.getElementById("escolher-imagem").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        document.getElementById("escolher-imagem").dataset.content = file.name;
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            base64 = reader.result;
+            
+        };
+        
+        reader.readAsDataURL(file);
+    });
+}
+
+function init(){
+    events();
+}

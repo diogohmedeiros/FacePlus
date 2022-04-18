@@ -112,6 +112,11 @@ main {
     width: 0px;
 }
 
+.melhores-avaliacoes{
+    grid-column: 1;
+    grid-row: 1;
+}
+
 .baixe-app {
     padding: 20px;
     background-color: #ffffff;
@@ -126,6 +131,9 @@ main {
 
     font-weight: 700;
     text-transform: uppercase;
+
+    grid-column: 1;
+    grid-row: 2;
 }
 
 .baixe-app > button {
@@ -144,7 +152,47 @@ main {
     width: 100%;
 }
 
-.lista-estabelecimentos {
+.model {
+    display: none;
+}
+
+.card-teste {
+    display: grid;
+    gap: 15px;
+    align-self: start;
+    grid-column: 2;
+}
+
+.card-comentario {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.200);
+
+    margin-bottom: 10px;
+}
+
+.card-comentario > div {
+    padding: 0 10px;
+}
+
+.usuario-card {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 0fr 1fr 0fr;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.hora {
+    font-size: 14px;
+}
+
+#imgPubli {
+    width: 100%;
+}
+
+/* .lista-estabelecimentos {
     display: grid;
     gap: 15px;
     align-self: start;
@@ -207,7 +255,7 @@ main {
     display: flex;
     gap: 10px;
     font-size: 14px;
-}
+} */
 
 .svg {
     width: 15px;
@@ -230,9 +278,17 @@ main {
         margin-top: 210px;
         grid-template-columns: 1fr;
     }
-    .baixe-app {
-        grid-row: 2;
+    .card-teste{
         grid-column: 1;
+        grid-row: 1;
+    }
+    .melhores-avaliacoes{
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .baixe-app {
+        grid-column: 1;
+        grid-row: 3;
 
         display: grid;
     }
@@ -248,10 +304,6 @@ main {
     .baixe-app > button {
         grid-column: 2;
     }
-    .lista-estabelecimentos{
-        grid-row: 1;
-        grid-column: 1;
-    }
 }
 
 @media (max-width: 600px) {
@@ -265,10 +317,6 @@ main {
     }
     .menu{
         width: 95vw;
-    }
-    .foto-estabelecimento {
-        width: 50px;
-        height: 50px;
     }
     .baixe-app {
         display: flex;
@@ -284,26 +332,5 @@ main {
     }
     .baixe-app > button {
         grid-column: 1;
-    }
-}
-
-@media (max-width: 300px) {    
-    .foto-estabelecimento {
-        width: 40px;
-        height: 40px;
-    }
-    .nome-localizacao > p {
-        font-size: 12px;
-    }
-    
-    .localizacao > i {
-        font-size: 12px;
-    }
-    
-    .localizacao > p {
-        font-size: 10px;
-    }
-    .tipo-acessibilidade {
-        font-size: 12px;
     }
 }

@@ -62,3 +62,22 @@ function buscar () {
         }
     }
 }
+
+async function publicacoes(){
+    const response = await fetch("http://10.87.207.9:8080/publication/");
+    const data = await response.json();
+    console.log(data);
+    data.forEach(e => {
+        let model = document.querySelector(".card-teste").cloneNode(true)
+        model.querySelector(".perfil-nome").innerHTML= e.user.username
+        model.querySelector(".hora").innerHTML= e.location
+        model.querySelector(".comment").innerHTML= e.text
+        model.querySelector("#imgPubli").src= e.image
+        model.querySelector(".foto-sugestao").src= e.user.avatar
+        model.classList.remove("model")
+        document.querySelector(".scroll-perfil").appendChild(model)
+    } )
+}
+
+publicacoes();
+

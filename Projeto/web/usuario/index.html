@@ -14,9 +14,10 @@
     <header>
         <img class="logo" src="../assets/logo.svg" alt="">
         <nav>
-            <span class="nome-usuario">Diogo</span>
-            <img class="foto-usuario" src="../assets/posts/ronald-mcdonald.jpg" alt="">
-            <img class="notificacao" src="../assets/icons/sino.svg" alt="">
+            <span class="nome-usuario"></span>
+            <img class="foto-usuario" alt="">
+            <img class="sair" src="../assets/icons/sair-alt.svg" alt="">
+            <!-- <img class="notificacao" alt=""> -->
         </nav>
     </header>
 
@@ -41,10 +42,10 @@
                     <img class="foto" id="imgUser" alt="">
                     <input type="file" id="foto" hidden>
                     <button id="trocar_foto">Trocar foto</button>
-                    <p class="perfil-nome">Diogo Medeiros</p>
-                    <p class="perfil-email">diogo@gmail.com</p>
+                    <p class="perfil-nome"></p>
+                    <p class="perfil-email"></p>
                     <div class="tipo-acessibilidade">
-                        <p>Brasileiro, 24 anos, Tecnologia da Informação</p>
+                        <p></p>
                     </div>
                 </div>
 
@@ -66,12 +67,12 @@
                         </div>
                         <div class="fazer-avaliacao">
                             <div>
-                                <textarea id="comentario" name="comentario" rows="4" cols="30">Comente...</textarea>
+                                <textarea id="comentario" name="comentario" rows="4" cols="30" placeholder="Comente..."></textarea>
                                 
                                 <img id="imgPubli" alt="">
                                 <input type="file" id="foto-publicar" hidden>
                                 <button id="escolher-imagem">Escolher Imagem</button>
-                                <button class="enviar" onclick="Enviar()">Enviar</button>
+                                <button class="enviar" id="submit" onclick="criar()">Enviar</button>
                             </div>
                         </div>
                     </div>
@@ -81,13 +82,13 @@
                             <div>
                                 <div class="usuario-card">
                                     <img class="foto-sugestao" src="../assets/posts/mcdonalds.jpg" alt="">
-                                    <p class="perfil-nome">Jãozin</p>
+                                    <p class="perfil-nome">Diogo</p>
                                     <p class="hora">3h</p>
                                 </div>
                             </div>
                             <div>
                                 <p>Muito boa comida. Só isso.</p>
-                                <img id="imgPubli" alt="" src="../assets/posts/ronald-mcdonald.jpg">
+                                <img id="imgPubli" alt="" src="../assets/posts/mcdonalds.jpg">
                             </div>
                         </div>
                     </div>
